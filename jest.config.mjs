@@ -10,6 +10,8 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom'
 }
 
-export default nextJest({
+const createJestConfig = nextJest({
   dir: './'
-})(customJestConfig)
+})
+
+export default createJestConfig(customJestConfig)

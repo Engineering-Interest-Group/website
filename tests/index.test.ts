@@ -1,5 +1,5 @@
-import { expect } from 'chai'
-
 describe('', () => {
-  it('', () => expect(() => true))
+  it('', () => expect(() => true).toBeTruthy())
 })
+
+export {}

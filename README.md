@@ -1,7 +1,9 @@
-# node-boilerplate
+# website
 
-Boilerplate for Node.js projects.
+## Features
+
+## Setup
 
 ```bash
-yarn upgrade --latest
+yarn
 ```

@@ -1,0 +1,42 @@
+name: Test and build
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/workflows/main.yml'
+      - 'package.json'
+      - 'tsconfig.json'
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.4.0
+
+      - name: 'Cache node_modules'
+        uses: actions/cache@v3
+        env:
+          CACHE_NAME: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.CACHE_NAME }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install node dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Build project
+        run: yarn build

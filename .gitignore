@@ -1,6 +1,5 @@
 .vscode/
 .next/
 .swc/
-/node_modules
-.env
+node_modules/
 next-env.d.ts

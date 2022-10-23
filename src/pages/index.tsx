@@ -1,3 +1,9 @@
+import Head from 'next/head'
+
 export default function IndexPage() {
-  return
+  return (
+    <Head>
+      <title>Become more than an engineer.</title>
+    </Head>
+  )
 }
